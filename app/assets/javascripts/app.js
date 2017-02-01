@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'restangular']);
+var app = angular.module('app', ['ui.router', 'restangular', 'Devise']);
 
 app.constant('_', window._);
 app.run(function ($rootScope) {
@@ -6,8 +6,8 @@ app.run(function ($rootScope) {
 });
 
 app.config(
-  ["$httpProvider", "$stateProvider", "$urlRouterProvider", "RestangularProvider",
-    function($httpProvider, $stateProvider, $urlRouterProvider, RestangularProvider) {
+  ["$httpProvider", "$stateProvider", "$urlRouterProvider", "RestangularProvider", 'AuthProvider',
+    function($httpProvider, $stateProvider, $urlRouterProvider, RestangularProvider, AuthProvider) {
       // CSRF stuff
       var token = $('meta[name=csrf-token]').attr('content');
       $httpProvider
@@ -15,8 +15,9 @@ app.config(
         .headers
         .common['X-CSRF-Token'] = token;
 
+      // Devise
 
-      
+
     }
   ]
 );

@@ -18,5 +18,6 @@
 //= require angular
 //= require ui-router
 //= require restangular
+//= require angular-devise
 
 //= require_tree .
